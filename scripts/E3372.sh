@@ -18,7 +18,7 @@ else
 fi
 
 case "$1" in
-connect) 
+connect)
     curl $curl_options \
     -X POST "$webroot/dialup/dial" \
     -H "Cookie:$COOKIE" \
@@ -26,21 +26,21 @@ connect)
     -d"<request><Action>1</Action></request>" | $pretty_print
 ;;
 disconnect)
-    curl $curl_options \ 
+    curl $curl_options \
     -X POST "$webroot/dialup/dial" \
     -H "Cookie:$COOKIE" \
     -H "__RequestVerificationToken:$TOKEN" \
     -d "<request><Action>1</Action></request>" | $pretty_print
 ;;
 send_sms)
-    curl $curl_options \ 
+    curl $curl_options \
     -X POST "$webroot/sms/send-sms" \
     -H "Cookie:$COOKIE" \
     -H "__RequestVerificationToken:$TOKEN" \
     -d "<request><Index>-1</Index><Phones><Phone>$2</Phone></Phones><Sca>$sca</Sca><Content>$3</Content><Length>${#3}</Length><Reserved>1</Reserved><Date>-1</Date></request>"
 ;;
 get_sms)
-    curl $curl_options \ 
+    curl $curl_options \
     -X POST "$webroot/sms/sms-list" \
     -H "Cookie:$COOKIE" \
     -H "__RequestVerificationToken:$TOKEN" \
@@ -98,12 +98,12 @@ get_ussd)
     -H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" \
     -d "<request><content>$2</content><codeType>CodeType</codeType><timeout></timeout></request>"|$pretty_print;
 ;;
-*) 
+*)
 cat >&2 << EOF
 #############################################
 #    HILINK E3372 TOOL (rohan@rmolloy.io)   #
 #############################################
-connect) 
+connect)
     Brings the modem online
     
 disconnect)
