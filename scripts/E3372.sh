@@ -72,6 +72,12 @@ traffic_statistics)
     -H "Cookie:$COOKIE" \
     -H "__RequestVerificationToken:$TOKEN" | $pretty_print
 ;;
+month_traffic)
+    curl $curl_options \
+    -X GET "$webroot/monitoring/month_statistics" \
+    -H "Cookie:$COOKIE" \
+    -H "__RequestVerificationToken:$TOKEN" | $pretty_print
+;;
 check_notifications)
     curl $curl_options \
     -X GET "$webroot/monitoring/check-notifications" \
