@@ -18,6 +18,20 @@ else
 fi
 
 case "$1" in
+connect_data)
+    curl $curl_options \
+    -X POST "$webroot/dialup/mobile-dataswitch" \
+    -H "Cookie:$COOKIE" \
+    -H "__RequestVerificationToken:$TOKEN" \
+    -d"<request><dataswitch>1</dataswitch></request>" | $pretty_print
+;;
+disconnect_data)
+    curl $curl_options \
+    -X POST "$webroot/dialup/mobile-dataswitch" \
+    -H "Cookie:$COOKIE" \
+    -H "__RequestVerificationToken:$TOKEN" \
+    -d "<request><dataswitch>0</dataswitch></request>" | $pretty_print
+;;
 connect)
     curl $curl_options \
     -X POST "$webroot/dialup/dial" \
